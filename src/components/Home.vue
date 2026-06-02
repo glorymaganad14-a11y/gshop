@@ -5,6 +5,9 @@ export default {
     props: {
         addingProduct: {
             type: Boolean
+        },
+        forSearch: {
+            type: String
         }
     },
     components: {
@@ -65,7 +68,7 @@ export default {
                 {
                     id: 9,
                     image: 'https://i.pinimg.com/1200x/73/57/ca/7357ca5ff528e57584e6776900377781.jpg',
-                    name: 'Minimalis Necklace',
+                    name: 'Minimalist Necklace',
                     price: '198'
                 },
                 {
@@ -276,8 +279,23 @@ export default {
 
             showModal: false,
             showCart: false,
+            history: false,
+            searchbar: '',
         }
-    }, methods: {
+    },
+    computed: {
+        filteredProducts() {
+            if (!this.forSearch.trim()) {
+                return this.products
+            }
+            const query = this.forSearch.toLowerCase().trim();
+            return this.products.filter(product =>
+                product.name.toLowerCase().includes(query)
+            )
+        }
+    },
+
+    methods: {
         handleBuy() {
         },
         Modalbtn(index) {
@@ -296,6 +314,9 @@ export default {
         sendtoCart(product) {
             this.$emit('addtocart', { ...product });
             this.showModal = false
+        },
+        sendtohistory(){
+            this.$emit('purchase', {...product})
         }
     },
 }
@@ -332,10 +353,10 @@ export default {
             </div>
         </div>
 
-        <div class="flex justify-center gap-7">
+        <div class="flex justify-center gap-7 p-2">
             <div class="flex bg-white shadow-xl/10 gap-8 py-2 px-1">
                 <div v-for="choice in choices">
-                    <div class="">
+                    <div class="py-2">
                         <img class="w-13" :src="choice.image" alt="">
                         <p class="text-[14px]">{{ choice.name }}</p>
                     </div>
@@ -347,7 +368,7 @@ export default {
                 <h1 class="xl text-gray-500 p-5">CATEGORIES</h1>
                 <hr class="text-gray-400">
                 <div class="flex ">
-                    <div class="grid grid-cols-10 gap-3">
+                    <div class="grid lg:grid-cols-10 gap-3 mg:grid-cols-5 sm:grid-cols-2">
                         <div v-for="category in categories" class="hover:scale-102 cursor-pointer hover:shadow-xl/20">
                             <div class="flex justify-center">
                                 <img class="w-20" :src="category.image" alt="">
@@ -384,8 +405,8 @@ export default {
             </div>
         </div>
         <div class="flex justify-center">
-            <div class="grid grid-cols-6 gap-2 p-2">
-                <div v-for="(product, index) in products" :key="product.id" 5class="">
+            <div class="grid lg:grid-cols-6 gap-2 p-2 sm:grid-cols-1">
+                <div v-for="(product, index) in filteredProducts" :key="product.id" 5class="">
                     <div class="w-48 h-auto hover:scale-106 hover:shadow-xl/10 rounded-xl cursor-pointer bg-white">
                         <img class="w-48 h-55" :src="product.image" alt="">
                         <div class="p-2 pb-3">
@@ -394,14 +415,15 @@ export default {
                             </div>
                             <div class="flex justify-between">
                                 <h3 class="text-sm font-semibold text-red-600/80">₱{{ product.price }}.00</h3>
-                                <svg @click="Modalbtn(index)" class="w-8 h-8 p-1 text-white bg-amber-900/80 rounded-full" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
-                                width="24" height="24" fill="none" viewBox="0 0 24 24">
-                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
-                                stroke-width="2"
-                                d="M5 4h1.5L9 16m0 0h8m-8 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4Zm8 0a2 2 0 1 0 0 4 2 2 0 0
+                                <svg @click="Modalbtn(index)"
+                                    class="w-8 h-8 p-1 text-white bg-amber-900/80 rounded-full" aria-hidden="true"
+                                    xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none"
+                                    viewBox="0 0 24 24">
+                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                        stroke-width="2" d="M5 4h1.5L9 16m0 0h8m-8 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4Zm8 0a2 2 0 1 0 0 4 2 2 0 0
                                 0 0-4Zm-8.5-3h9.25L19 7h-1M8 7h-.688M13 5v4m-2-2h4" />
-                            </svg>
-                        </div>
+                                </svg>
+                            </div>
 
                         </div>
                     </div>

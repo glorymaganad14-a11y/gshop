@@ -2,35 +2,35 @@
 </script>
 <template>
     <div class="w-full h-auto bg-gray-100 border-t-5 border-amber-900 pt-10">
-        <div class="flex justify-center gap-20">
+        <div class="flex justify-center gap-30">
             <div>
                 <h1 class="text-sm font-bold">CUSTOMER SERVICE</h1>
                 <div class="mt-2 text-[13px] text-gray-700 space-y-2">
-                    <p>Help Centre</p>
-                    <p>Shopee Cares PH</p>
-                    <p>Payment Methods</p>
-                    <p>ShopeePay</p>
-                    <p>Shopee Coins</p>
-                    <p>Order Tracking</p>
-                    <p>Free Shipping</p>
-                    <p>Return and Refund</p>
-                    <p>Shopee Guarantee</p>
-                    <p>Overseas Products</p>
-                    <p>Contact US</p>
+                    <p class="cursor-pointer hover:text-amber-900 hover:font-semibold">Help Centre</p>
+                    <p class="cursor-pointer hover:text-amber-900 hover:font-semibold">Shopee Cares PH</p>
+                    <p class="cursor-pointer hover:text-amber-900 hover:font-semibold">Payment Methods</p>
+                    <p class="cursor-pointer hover:text-amber-900 hover:font-semibold">ShopeePay</p>
+                    <p class="cursor-pointer hover:text-amber-900 hover:font-semibold">Shopee Coins</p>
+                    <p class="cursor-pointer hover:text-amber-900 hover:font-semibold">Order Tracking</p>
+                    <p class="cursor-pointer hover:text-amber-900 hover:font-semibold">Free Shipping</p>
+                    <p class="cursor-pointer hover:text-amber-900 hover:font-semibold">Return and Refund</p>
+                    <p class="cursor-pointer hover:text-amber-900 hover:font-semibold">Shopee Guarantee</p>
+                    <p class="cursor-pointer hover:text-amber-900 hover:font-semibold">Overseas Products</p>
+                    <p class="cursor-pointer hover:text-amber-900 hover:font-semibold">Contact US</p>
                 </div>
             </div>
             <div>
                 <h1 class="text-sm font-bold">ABOUT SHOPEE</h1>
                 <div class="mt-2 text-[13px] text-gray-700 space-y-2">
-                    <p>About Us</p>
-                    <p>Shopee Blog</p>
-                    <p>Shopee Careers</p>
-                    <p>Policies</p>
-                    <p>Shopee Privacy Policy</p>
-                    <p>Shopee Mall</p>
-                    <p>Seller Centre</p>
-                    <p>Flash Deals</p>
-                    <p>Media Contact</p>
+                    <p class="cursor-pointer hover:text-amber-900 hover:font-semibold">About Us</p>
+                    <p class="cursor-pointer hover:text-amber-900 hover:font-semibold">Shopee Blog</p>
+                    <p class="cursor-pointer hover:text-amber-900 hover:font-semibold">Shopee Careers</p>
+                    <p class="cursor-pointer hover:text-amber-900 hover:font-semibold">Policies</p>
+                    <p class="cursor-pointer hover:text-amber-900 hover:font-semibold">Shopee Privacy Policy</p>
+                    <p class="cursor-pointer hover:text-amber-900 hover:font-semibold">Shopee Mall</p>
+                    <p class="cursor-pointer hover:text-amber-900 hover:font-semibold">Seller Centre</p>
+                    <p class="cursor-pointer hover:text-amber-900 hover:font-semibold">Flash Deals</p>
+                    <p class="cursor-pointer hover:text-amber-900 hover:font-semibold">Media Contact</p>
                 </div>
             </div>
             <div>
@@ -69,8 +69,12 @@
             </div>
             <div>
                 <h1 class="text-[13px] font-bold">SHOPEE APP DOWNLOAD</h1>
+                <img class="w-30" src="https://i.pinimg.com/736x/0e/97/27/0e972709749e682fb5bf8d85dcb2e35d.jpg" alt="">
             </div>
         </div>
-        <hr>
+        <div class="flex justify-center">
+            <hr class="w-300 mt-5 text-gray-600">
+        </div>
+        <h1 class="py-5 text-sm text-gray-600 pl-38">© GSHOP2026.All Rights Reserved.</h1>
     </div>
 </template>

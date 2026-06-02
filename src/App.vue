@@ -2,21 +2,24 @@
 import Nav from './components/Nav.vue'
 import Home from './components/Home.vue'
 import Cart from './components/Cart.vue'
+import History from './components/History.vue'
 import Footer from './components/Footer.vue'
 
 export default {
   components: {
     Nav,
     Home,
-    Cart, 
+    Cart,
+    History,
     Footer
   },
-
   data() {
     return {
       showAddModal: false,
       currentPage: 'home',
-      cartItems: []
+      cartItems: [],
+      checkout: [],
+      searchbar: ''
     }
   },
   methods: {
@@ -28,25 +31,24 @@ export default {
     },
 
     addToCart(product) {
-      this.cartItems.push({...product});
+      this.cartItems.push({ ...product });
+    },
+    clickcheckOut(product) {
+      this.checkout.push({ ...product })
+    },
+    handleSearch(search) {
+      this.searchbar = search;
     }
   }
 }
 </script>
 
 <template>
-  <Nav 
-  @OpenAddModal="showAddModal = true" 
-  @goTo="changePage" />
+  <Nav @OpenAddModal="showAddModal = true" @goTo="changePage" @searchBar="handleSearch" />
+  <Home v-if="currentPage === 'home'" :addingProduct="showAddModal" @closeaddModal="showAddModal = false"
+    @addtocart="addToCart" :forSearch="searchbar" />
 
-  <Home 
-  v-if="currentPage === 'home'" 
-  :addingProduct="showAddModal" 
-  @closeaddModal="showAddModal = false"
-  @addtocart="addToCart" />
-
-  <Cart 
-  v-if="currentPage === 'showCart'" 
-  :cartitems="cartItems" />
+  <Cart v-if="currentPage === 'showCart'" :cartitems="cartItems" />
+  <History v-if="currentPage === 'history'" @purchase="clickcheckOut" :purchased="checkout"/>
   <Footer />
 </template>
